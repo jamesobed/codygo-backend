@@ -18,6 +18,14 @@ export const updateListingSchema = Joi.object().keys({
   rating: Joi.string(),
 });
 
+export const createBrandSchema = Joi.object().keys({
+  name: Joi.string().required(),
+  hotelID: Joi.string().required(),
+});
+
+export const updateBrandSchema = Joi.object().keys({
+  name: Joi.string(),
+});
 export const options = {
   abortEarly: false,
   errors: {

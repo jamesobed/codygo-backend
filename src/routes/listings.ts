@@ -5,10 +5,12 @@ import {
   getHotels,
   getSingleHotel,
   updateHotel,
+  getHotelsWithBrands,
 } from "../controller/hotelListController";
 
 const router = express.Router();
 
+router.get("/all", getHotelsWithBrands);
 router.get("/", getHotels);
 router.get("/:id", getSingleHotel);
 router.post("/", createHotel);

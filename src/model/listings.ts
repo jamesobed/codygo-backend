@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/databaseConfig";
-
+import { HotelBrandInstance } from "./brand";
 interface HotelListingAttributes {
   name: string;
   city: string;
@@ -44,3 +44,13 @@ HotelListingInstance.init(
     tableName: "Listings",
   }
 );
+
+HotelListingInstance.hasMany(HotelBrandInstance, {
+  foreignKey: "hotelID",
+  as: "Brands",
+});
+
+HotelBrandInstance.belongsTo(HotelListingInstance, {
+  foreignKey: "hotelID",
+  as: "Listings",
+});

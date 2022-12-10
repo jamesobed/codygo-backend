@@ -6,6 +6,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import listingsRouter from "./routes/listings";
+import brandsRouter from "./routes/brand";
 import db from "./config/databaseConfig";
 
 db.sync({
@@ -32,6 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.use("/hotels", listingsRouter);
+app.use("/brand", brandsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

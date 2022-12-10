@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-// import { number } from "joi";
+import { HotelBrandInstance } from "../model/brand";
 import { HotelListingInstance } from "../model/listings";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -144,5 +144,37 @@ export async function deleteHotel(
     });
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function getHotelsWithBrands(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const limit = req.query?.limit as number | undefined;
+    const offset = req.query?.offset as number | undefined;
+    const record = await HotelListingInstance.findAll({
+      include: [
+        {
+          model: HotelBrandInstance,
+          as: "Brands",
+        },
+      ],
+      limit,
+      offset,
+    });
+    res.status(200).json({
+      msg: "You have successfully fetch all hotelLists",
+      // count: record
+      records: record,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      msg: "failed to read",
+      route: "/getHotels",
+    });
   }
 }
