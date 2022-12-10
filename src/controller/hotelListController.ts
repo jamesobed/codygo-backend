@@ -92,7 +92,7 @@ export async function updateHotel(
 ) {
   try {
     const { id } = req.params;
-    const { name, city, address, country, rating } = req.body;
+    const { name, city, address, country } = req.body;
     const validationResult = updateListingSchema.validate(req.body, options);
     if (validationResult.error) {
       return res.status(400).json({
@@ -112,7 +112,6 @@ export async function updateHotel(
       city,
       address,
       country,
-      rating,
     });
     res.status(200).json({
       msg: "You have successfully updated your hotel",

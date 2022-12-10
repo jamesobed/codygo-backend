@@ -7,7 +7,6 @@ export const createListingSchema = Joi.object().keys({
   city: Joi.string().required(),
   address: Joi.string().required(),
   country: Joi.string().required(),
-  rating: Joi.string().required(),
 });
 
 export const updateListingSchema = Joi.object().keys({
@@ -15,7 +14,6 @@ export const updateListingSchema = Joi.object().keys({
   city: Joi.string(),
   address: Joi.string(),
   country: Joi.string(),
-  rating: Joi.string(),
 });
 
 export const createBrandSchema = Joi.object().keys({

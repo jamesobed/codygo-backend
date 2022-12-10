@@ -6,7 +6,7 @@ interface HotelListingAttributes {
   city: string;
   address: string;
   country: string;
-  rating: string;
+  rating?: string;
   id: string;
 }
 
@@ -33,9 +33,6 @@ HotelListingInstance.init(
       allowNull: false,
     },
     country: {
-      type: DataTypes.STRING,
-    },
-    rating: {
       type: DataTypes.STRING,
     },
   },
